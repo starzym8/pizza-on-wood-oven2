@@ -1,0 +1,87 @@
+{
+  "store": {
+    "name": "Pizza on Wood Oven",
+    "suburb": "St Kilda",
+    "address": "138 Acland Street, St Kilda VIC 3182",
+    "hours": "Open daily 10:00 am – 9:00 pm",
+    "rating": 3.8,
+    "reviewCount": 45,
+    "deliveryFee": 5.99,
+    "deliveryMinimum": 25.00
+  },
+  "deal": {
+    "id": "deal-two-pizzas-gb",
+    "name": "Special Deal — Two Pizzas + Garlic Bread",
+    "description": "Any two pizzas and garlic bread.",
+    "price": 49.00,
+    "pizzaCount": 2
+  },
+  "categories": [
+    {
+      "id": "gourmet",
+      "name": "Gourmet Pizzas",
+      "items": [
+        { "id": "super-supreme", "name": "Super Supreme Pizza", "price": 25.50, "discountPct": 20, "badge": "No. 1 most liked", "description": "Tomato sauce, cheese, ham, salami, mushroom, onion, capsicum, pineapple, olives, anchovies and bacon.", "isPizza": true },
+        { "id": "chicken-gourmet", "name": "Chicken Gourmet Pizza", "price": 25.80, "discountPct": 20, "badge": "No. 2 most liked", "description": "Tomato sauce, cheese, chicken, onion, roasted capsicum, bacon and grated parmesan.", "isPizza": true },
+        { "id": "meat-meat", "name": "Meat, Meat and Meeeatt Pizza", "price": 25.50, "badge": "No. 3 most liked", "description": "Barbecue sauce, cheese, ham, pepperoni, Italian sausage, chicken breast, beef meatballs and bacon.", "isPizza": true },
+        { "id": "spicy-chicken-gourmet", "name": "Spicy Chicken Gourmet Pizza", "price": 25.00, "description": "Tomato sauce, cheese, spicy chicken, jalapeños, onion and roasted capsicum.", "isPizza": true },
+        { "id": "original-gourmet", "name": "Original Gourmet Pizza", "price": 25.00, "description": "The house gourmet — tomato sauce, cheese and the kitchen's pick of premium toppings.", "isPizza": true }
+      ]
+    },
+    {
+      "id": "classic",
+      "name": "Classic Pizzas",
+      "items": [
+        { "id": "margherita", "name": "Margherita Pizza", "price": 23.10, "description": "Tomato sauce, mozzarella and fresh basil, blistered in the wood oven.", "isPizza": true },
+        { "id": "hawaiian", "name": "Classic Hawaiian Pizza", "price": 23.90, "description": "Tomato sauce, cheese, ham and pineapple.", "isPizza": true },
+        { "id": "loaded-pepperoni", "name": "Loaded Pepperoni Pizza", "price": 23.90, "badge": "93% liked", "description": "Tomato sauce, cheese and a double run of pepperoni.", "isPizza": true },
+        { "id": "mexican", "name": "Mexican Pizza", "price": 23.90, "description": "Tomato sauce, cheese, salami, onion, capsicum, jalapeños and chilli.", "isPizza": true },
+        { "id": "aussie", "name": "Aussie Pizza", "price": 23.90, "description": "Tomato sauce, cheese, ham, bacon and egg.", "isPizza": true },
+        { "id": "house-special", "name": "House Special Pizza", "price": 22.90, "description": "Tomato sauce, cheese, ham, mushroom, onion, capsicum and olives.", "isPizza": true }
+      ]
+    },
+    {
+      "id": "mains",
+      "name": "Mains",
+      "items": [
+        { "id": "chicken-parmigiana", "name": "Chicken Parmigiana", "price": 34.99, "description": "Chicken breast, mozzarella cheese, Napoli sauce, served with chips." },
+        { "id": "ny-schnitzel", "name": "New York Schnitzel", "price": 34.99, "description": "Chicken, pepperoni, cheese, roasted capsicum and Napoli sauce, served with chips." }
+      ]
+    },
+    {
+      "id": "pasta",
+      "name": "Pasta",
+      "items": [
+        { "id": "carbonara", "name": "Carbonara Pasta", "price": 27.00, "discountPct": 20, "description": "Bacon, cream, egg, cracked pepper and parmesan cheese." }
+      ]
+    },
+    {
+      "id": "sides",
+      "name": "Sides",
+      "placeholder": true,
+      "items": [
+        { "id": "garlic-bread", "name": "Garlic Bread", "price": 8.50, "description": "Wood-oven baked, brushed with garlic butter." },
+        { "id": "chips", "name": "Chips", "price": 7.50, "description": "Golden fries with chicken salt." }
+      ]
+    },
+    {
+      "id": "drinks",
+      "name": "Drinks",
+      "placeholder": true,
+      "items": [
+        { "id": "soft-drink-can", "name": "Soft Drink (Can)", "price": 3.50, "description": "Coke, Coke Zero, Sprite or Fanta." },
+        { "id": "soft-drink-125", "name": "Soft Drink (1.25L)", "price": 6.50, "description": "Coke, Coke Zero, Sprite or Fanta." },
+        { "id": "flat-white", "name": "Flat White", "price": 5.00, "description": "Double shot, your choice of milk." },
+        { "id": "cappuccino", "name": "Cappuccino", "price": 5.00, "description": "Double shot, dusted with chocolate." }
+      ]
+    }
+  ],
+  "extras": [
+    { "id": "x-cheese", "name": "Extra cheese", "price": 2.50 },
+    { "id": "x-pepperoni", "name": "Extra pepperoni", "price": 3.00 },
+    { "id": "x-chicken", "name": "Extra chicken", "price": 3.50 },
+    { "id": "x-mushroom", "name": "Extra mushroom", "price": 2.00 },
+    { "id": "x-jalapeno", "name": "Jalapeños", "price": 2.00 },
+    { "id": "x-gf-base", "name": "Gluten-free base", "price": 4.00 }
+  ]
+}
