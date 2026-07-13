@@ -1,0 +1,694 @@
+<!doctype html>
+<html lang="en-AU">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Pizza on Wood Oven — St Kilda | Order Online</title>
+<meta name="description" content="Order wood-fired pizza, pasta and mains direct from Pizza on Wood Oven, 138 Acland Street, St Kilda. Pickup and delivery.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Alfa+Slab+One&family=Archivo:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+:root{
+  --char:#26160f;        /* charred oak */
+  --char-deep:#1b0f0a;
+  --ember:#f0662b;       /* flame */
+  --ember-hot:#ff8a4d;
+  --flour:#f7eede;       /* card surface */
+  --flour-dim:#e9dcc4;
+  --crust:#c98a4b;       /* golden crust */
+  --basil:#6d8b54;
+  --tomato:#c63b2a;
+  --ink:#2a1a10;         /* text on flour */
+  --ink-soft:#6b5240;
+  --radius:14px;
+  --shadow:0 10px 30px rgba(0,0,0,.35);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  *,*::before,*::after{animation:none!important;transition:none!important}
+}
+body{
+  font-family:"Archivo",system-ui,sans-serif;
+  background:var(--char);
+  color:var(--flour);
+  line-height:1.55;
+  -webkit-font-smoothing:antialiased;
+}
+img{max-width:100%;display:block}
+button{font:inherit;cursor:pointer;border:none;background:none;color:inherit}
+input,select,textarea{font:inherit}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--ember-hot);outline-offset:2px;border-radius:4px}
+.display{font-family:"Alfa Slab One",serif;font-weight:400;letter-spacing:.01em}
+.wrap{max-width:1100px;margin:0 auto;padding:0 20px}
+
+/* ---------- top bar ---------- */
+.topbar{
+  position:sticky;top:0;z-index:40;
+  background:rgba(27,15,10,.92);backdrop-filter:blur(8px);
+  border-bottom:1px solid rgba(201,138,75,.25);
+}
+.topbar-inner{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:12px 20px;max-width:1100px;margin:0 auto}
+.brand{display:flex;align-items:center;gap:10px;text-decoration:none}
+.brand-mark{width:34px;height:34px;flex:none}
+.brand-name{font-family:"Alfa Slab One",serif;font-size:1.02rem;line-height:1.15;color:var(--flour)}
+.brand-name small{display:block;font-family:"Archivo";font-weight:600;font-size:.68rem;letter-spacing:.14em;text-transform:uppercase;color:var(--crust)}
+.cart-btn{
+  display:flex;align-items:center;gap:8px;
+  background:var(--ember);color:#fff;font-weight:700;
+  padding:10px 16px;border-radius:999px;transition:transform .12s ease, background .12s ease;
+}
+.cart-btn:hover{background:var(--ember-hot);transform:translateY(-1px)}
+.cart-count{background:#fff;color:var(--char);border-radius:999px;min-width:22px;height:22px;display:grid;place-items:center;font-size:.8rem;font-weight:700;padding:0 6px}
+
+/* ---------- hero ---------- */
+.hero{padding:56px 0 40px;position:relative;overflow:hidden}
+.hero-grid{display:grid;grid-template-columns:1.2fr .8fr;gap:36px;align-items:center}
+.eyebrow{font-weight:700;font-size:.75rem;letter-spacing:.22em;text-transform:uppercase;color:var(--ember-hot);margin-bottom:14px}
+h1{font-family:"Alfa Slab One",serif;font-weight:400;font-size:clamp(2.1rem,5vw,3.4rem);line-height:1.08;color:var(--flour)}
+h1 .accent{color:var(--ember)}
+.hero p.lede{margin-top:16px;max-width:46ch;color:var(--flour-dim);font-size:1.05rem}
+.facts{display:flex;flex-wrap:wrap;gap:10px;margin-top:22px}
+.fact{display:flex;align-items:center;gap:7px;background:rgba(247,238,222,.07);border:1px solid rgba(201,138,75,.3);padding:7px 13px;border-radius:999px;font-size:.85rem;font-weight:600}
+.fact svg{width:15px;height:15px;flex:none}
+.hero-ctas{display:flex;gap:12px;margin-top:26px;flex-wrap:wrap}
+.btn{display:inline-flex;align-items:center;gap:8px;font-weight:700;border-radius:999px;padding:13px 24px;transition:transform .12s ease,background .12s ease}
+.btn-primary{background:var(--ember);color:#fff}
+.btn-primary:hover{background:var(--ember-hot);transform:translateY(-1px)}
+.btn-ghost{border:2px solid var(--crust);color:var(--flour)}
+.btn-ghost:hover{background:rgba(201,138,75,.15)}
+/* oven illustration */
+.oven{position:relative;aspect-ratio:1/1;max-width:360px;margin-left:auto}
+.oven svg{width:100%;height:auto}
+.flame{transform-origin:50% 100%;animation:flicker 1.6s ease-in-out infinite alternate}
+.flame.f2{animation-duration:1.1s;animation-delay:.3s}
+.flame.f3{animation-duration:1.9s;animation-delay:.7s}
+@keyframes flicker{
+  from{transform:scaleY(1) skewX(0deg);opacity:.95}
+  to{transform:scaleY(1.14) skewX(-3deg);opacity:1}
+}
+
+/* ---------- category nav ---------- */
+.catnav{position:sticky;top:59px;z-index:30;background:rgba(38,22,15,.95);backdrop-filter:blur(8px);border-bottom:1px solid rgba(201,138,75,.25)}
+.catnav-inner{display:flex;gap:8px;overflow-x:auto;padding:10px 20px;max-width:1100px;margin:0 auto;scrollbar-width:none}
+.catnav-inner::-webkit-scrollbar{display:none}
+.chip{flex:none;padding:8px 16px;border-radius:999px;border:1px solid rgba(201,138,75,.4);font-weight:600;font-size:.88rem;color:var(--flour-dim);transition:background .12s,color .12s}
+.chip:hover,.chip.active{background:var(--flour);color:var(--ink);border-color:var(--flour)}
+
+/* ---------- deal band (signature) ---------- */
+.deal{margin:44px 0 8px;background:linear-gradient(135deg,#3a2113,#2c1810);border:2px solid var(--crust);border-radius:20px;padding:28px;position:relative;overflow:hidden}
+.deal::after{content:"";position:absolute;right:-60px;top:-60px;width:220px;height:220px;border-radius:50%;background:radial-gradient(circle,rgba(240,102,43,.28),transparent 70%);pointer-events:none}
+.deal-head{display:flex;flex-wrap:wrap;align-items:baseline;gap:8px 18px}
+.deal-title{font-family:"Alfa Slab One",serif;font-size:1.5rem;color:var(--flour)}
+.deal-price{font-family:"Alfa Slab One",serif;font-size:2rem;color:var(--ember-hot)}
+.deal-sub{color:var(--flour-dim);margin-top:6px}
+.deal-savings{color:var(--basil);font-weight:700}
+.deal-pick{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:20px}
+.deal-slot{background:rgba(247,238,222,.06);border:1px dashed rgba(201,138,75,.5);border-radius:var(--radius);padding:14px}
+.deal-slot label{display:block;font-size:.75rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--crust);margin-bottom:8px}
+.deal-slot select{width:100%;background:var(--flour);color:var(--ink);border:none;border-radius:9px;padding:11px 12px;font-weight:600}
+.deal-foot{display:flex;align-items:center;justify-content:space-between;gap:14px;margin-top:18px;flex-wrap:wrap}
+.deal-note{font-size:.85rem;color:var(--flour-dim)}
+
+/* ---------- menu ---------- */
+.section{padding:36px 0 4px}
+.section h2{font-family:"Alfa Slab One",serif;font-size:1.45rem;color:var(--flour);display:flex;align-items:center;gap:12px}
+.section h2::after{content:"";height:2px;flex:1;background:linear-gradient(90deg,rgba(201,138,75,.5),transparent)}
+.section .placeholder-note{font-size:.8rem;color:var(--crust);margin-top:4px}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:16px;margin-top:18px}
+.card{
+  background:var(--flour);color:var(--ink);border-radius:var(--radius);
+  padding:18px;display:flex;flex-direction:column;gap:8px;
+  border-bottom:4px solid var(--crust);
+  transition:transform .14s ease, box-shadow .14s ease;
+}
+.card:hover{transform:translateY(-3px);box-shadow:var(--shadow)}
+.card-top{display:flex;justify-content:space-between;gap:12px;align-items:flex-start}
+.card h3{font-size:1.06rem;font-weight:700;line-height:1.3}
+.badge{display:inline-block;background:var(--tomato);color:#fff;font-size:.68rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;padding:3px 9px;border-radius:999px;margin-bottom:6px}
+.badge.deal-badge{background:var(--basil)}
+.card p{font-size:.88rem;color:var(--ink-soft);flex:1}
+.price-row{display:flex;align-items:center;justify-content:space-between;margin-top:4px}
+.price{font-weight:700;font-size:1.05rem}
+.price .was{color:var(--ink-soft);text-decoration:line-through;font-weight:500;font-size:.86rem;margin-left:7px}
+.add-btn{background:var(--char);color:var(--flour);font-weight:700;border-radius:999px;padding:8px 18px;transition:background .12s}
+.add-btn:hover{background:var(--ember)}
+
+/* ---------- footer ---------- */
+footer{margin-top:56px;border-top:1px solid rgba(201,138,75,.25);padding:34px 0 44px;color:var(--flour-dim);font-size:.9rem}
+footer .wrap{display:flex;flex-wrap:wrap;gap:20px;justify-content:space-between}
+
+/* ---------- modal / drawer shared ---------- */
+.overlay{position:fixed;inset:0;background:rgba(15,8,5,.65);z-index:50;opacity:0;pointer-events:none;transition:opacity .18s ease}
+.overlay.open{opacity:1;pointer-events:auto}
+.modal{
+  position:fixed;left:50%;top:50%;transform:translate(-50%,-50%) scale(.96);
+  z-index:60;background:var(--flour);color:var(--ink);border-radius:18px;
+  width:min(480px,calc(100vw - 32px));max-height:min(86vh, 700px);overflow:auto;
+  opacity:0;pointer-events:none;transition:opacity .18s ease,transform .18s ease;box-shadow:var(--shadow);
+}
+.modal.open{opacity:1;pointer-events:auto;transform:translate(-50%,-50%) scale(1)}
+.modal-inner{padding:24px}
+.modal h3{font-family:"Alfa Slab One",serif;font-size:1.3rem;padding-right:36px}
+.modal .desc{color:var(--ink-soft);font-size:.92rem;margin-top:8px}
+.close-x{position:absolute;top:14px;right:14px;width:34px;height:34px;border-radius:50%;background:rgba(42,26,16,.08);display:grid;place-items:center;font-size:1.05rem;font-weight:700}
+.close-x:hover{background:rgba(42,26,16,.16)}
+fieldset{border:none;margin-top:18px}
+legend{font-weight:700;font-size:.8rem;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-soft);margin-bottom:8px}
+.opt{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:9px 0;border-bottom:1px solid rgba(42,26,16,.08)}
+.opt label{display:flex;align-items:center;gap:10px;font-weight:500;flex:1;cursor:pointer}
+.opt input[type=checkbox]{width:18px;height:18px;accent-color:var(--ember)}
+.opt .opt-price{font-size:.88rem;color:var(--ink-soft);font-weight:600}
+textarea{width:100%;border:1.5px solid rgba(42,26,16,.2);border-radius:10px;padding:10px 12px;resize:vertical;min-height:64px;background:#fff}
+.qty{display:flex;align-items:center;gap:0;border:1.5px solid rgba(42,26,16,.25);border-radius:999px;overflow:hidden}
+.qty button{width:40px;height:40px;font-size:1.2rem;font-weight:700;background:transparent}
+.qty button:hover{background:rgba(42,26,16,.08)}
+.qty span{min-width:34px;text-align:center;font-weight:700}
+.modal-foot{display:flex;gap:12px;align-items:center;margin-top:20px}
+.modal-foot .btn-primary{flex:1;justify-content:center}
+
+/* ---------- cart drawer ---------- */
+.drawer{
+  position:fixed;top:0;right:0;height:100dvh;width:min(430px,100vw);z-index:60;
+  background:var(--flour);color:var(--ink);transform:translateX(102%);
+  transition:transform .22s ease;display:flex;flex-direction:column;box-shadow:var(--shadow);
+}
+.drawer.open{transform:translateX(0)}
+.drawer-head{display:flex;align-items:center;justify-content:space-between;padding:18px 20px;border-bottom:2px solid rgba(42,26,16,.1)}
+.drawer-head h3{font-family:"Alfa Slab One",serif;font-size:1.2rem}
+.drawer-body{flex:1;overflow:auto;padding:16px 20px}
+.empty{color:var(--ink-soft);text-align:center;padding:40px 10px}
+.line{display:flex;gap:12px;padding:13px 0;border-bottom:1px solid rgba(42,26,16,.1)}
+.line-main{flex:1;min-width:0}
+.line-main strong{display:block;font-size:.95rem}
+.line-main small{color:var(--ink-soft);display:block;font-size:.8rem;margin-top:2px}
+.line-price{font-weight:700;white-space:nowrap}
+.line-actions{display:flex;align-items:center;gap:10px;margin-top:8px}
+.line-actions .qty{transform:scale(.85);transform-origin:left}
+.remove{color:var(--tomato);font-size:.8rem;font-weight:700;text-decoration:underline}
+.drawer-foot{border-top:2px solid rgba(42,26,16,.1);padding:16px 20px;background:#fff}
+.totline{display:flex;justify-content:space-between;font-size:.92rem;padding:3px 0;color:var(--ink-soft)}
+.totline.grand{font-weight:700;font-size:1.12rem;color:var(--ink);padding-top:8px}
+.totline .save{color:var(--basil);font-weight:700}
+.drawer-foot .btn-primary{width:100%;justify-content:center;margin-top:12px}
+
+/* ---------- checkout ---------- */
+.seg{display:grid;grid-template-columns:1fr 1fr;background:rgba(42,26,16,.08);border-radius:999px;padding:4px;margin:14px 0}
+.seg button{padding:9px;border-radius:999px;font-weight:700;color:var(--ink-soft)}
+.seg button.active{background:var(--char);color:var(--flour)}
+.field{margin-top:12px}
+.field label{display:block;font-weight:600;font-size:.85rem;margin-bottom:5px}
+.field input{width:100%;border:1.5px solid rgba(42,26,16,.25);border-radius:10px;padding:11px 12px;background:#fff}
+.field input.invalid{border-color:var(--tomato)}
+.err{color:var(--tomato);font-size:.8rem;font-weight:600;margin-top:4px;display:none}
+.field.show-err .err{display:block}
+.notice{background:rgba(109,139,84,.14);border:1px solid rgba(109,139,84,.4);color:#3c5229;border-radius:10px;padding:10px 13px;font-size:.84rem;margin-top:14px}
+.warn{background:rgba(198,59,42,.1);border-color:rgba(198,59,42,.35);color:#8c2a1e}
+/* confirmation */
+.confirm{text-align:center;padding:34px 22px}
+.confirm .tick{width:66px;height:66px;border-radius:50%;background:var(--basil);display:grid;place-items:center;margin:0 auto 16px;color:#fff;font-size:1.8rem}
+.confirm h3{font-family:"Alfa Slab One",serif;font-size:1.35rem}
+.confirm .order-no{font-family:"Alfa Slab One",serif;color:var(--ember);font-size:1.6rem;margin:10px 0}
+.confirm p{color:var(--ink-soft);font-size:.92rem}
+
+/* toast */
+.toast{position:fixed;bottom:22px;left:50%;transform:translateX(-50%) translateY(80px);background:var(--char-deep);color:var(--flour);padding:12px 20px;border-radius:999px;font-weight:600;z-index:80;transition:transform .2s ease;border:1px solid rgba(201,138,75,.4)}
+.toast.show{transform:translateX(-50%) translateY(0)}
+
+@media (max-width:760px){
+  .hero{padding:36px 0 24px}
+  .hero-grid{grid-template-columns:1fr}
+  .oven{max-width:230px;margin:0 auto}
+  .deal-pick{grid-template-columns:1fr}
+  .catnav{top:58px}
+}
+</style>
+</head>
+<body>
+
+<header class="topbar">
+  <div class="topbar-inner">
+    <a class="brand" href="#top" aria-label="Pizza on Wood Oven home">
+      <svg class="brand-mark" viewBox="0 0 40 40" aria-hidden="true"><path d="M20 3 A17 17 0 0 1 37 20 L20 20 Z" fill="#f0662b"/><circle cx="20" cy="20" r="17" fill="none" stroke="#c98a4b" stroke-width="2.5"/><circle cx="27" cy="12" r="2" fill="#f7eede"/><circle cx="31" cy="17" r="1.6" fill="#f7eede"/></svg>
+      <span class="brand-name">Pizza on Wood Oven<small>St Kilda</small></span>
+    </a>
+    <button class="cart-btn" id="cartOpenBtn" aria-label="Open cart">
+      <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true"><path d="M6 6h15l-1.7 8.5a2 2 0 0 1-2 1.5H9.3a2 2 0 0 1-2-1.6L5 3H2"/><circle cx="9.5" cy="20.5" r="1.5"/><circle cx="17.5" cy="20.5" r="1.5"/></svg>
+      Cart <span class="cart-count" id="cartCount">0</span>
+    </button>
+  </div>
+</header>
+
+<main id="top">
+  <!-- HERO -->
+  <section class="hero">
+    <div class="wrap hero-grid">
+      <div>
+        <p class="eyebrow">Order direct &amp; skip the app fees</p>
+        <h1>Wood-fired on <span class="accent">Acland Street.</span></h1>
+        <p class="lede">Hand-stretched bases, blistered in a real wood oven, ready in minutes. Order ahead for pickup or get it delivered around St Kilda.</p>
+        <div class="facts" role="list">
+          <span class="fact" role="listitem"><svg viewBox="0 0 24 24" fill="#f0662b" aria-hidden="true"><path d="M12 2l2.9 6.3 6.9.8-5.1 4.7 1.4 6.8L12 17l-6.1 3.6 1.4-6.8L2.2 9.1l6.9-.8z"/></svg>3.8 (45 ratings)</span>
+          <span class="fact" role="listitem">🕙 Open daily 10 am – 9 pm</span>
+          <span class="fact" role="listitem">📍 138 Acland St, St Kilda</span>
+        </div>
+        <div class="hero-ctas">
+          <a class="btn btn-primary" href="#menu-gourmet">Order now</a>
+          <a class="btn btn-ghost" href="#deal">$49 deal</a>
+        </div>
+      </div>
+      <div class="oven" aria-hidden="true">
+        <svg viewBox="0 0 200 200">
+          <ellipse cx="100" cy="182" rx="86" ry="10" fill="#1b0f0a"/>
+          <path d="M22 180 V96 A78 78 0 0 1 178 96 V180 Z" fill="#3a2113" stroke="#c98a4b" stroke-width="3"/>
+          <path d="M46 180 V110 A54 54 0 0 1 154 110 V180 Z" fill="#150a06"/>
+          <g class="flame f1"><path d="M100 168 C88 150 92 136 100 122 C108 136 112 150 100 168Z" fill="#f0662b"/></g>
+          <g class="flame f2"><path d="M82 170 C74 158 76 148 82 138 C88 148 90 158 82 170Z" fill="#ff8a4d"/></g>
+          <g class="flame f3"><path d="M118 170 C110 158 112 148 118 138 C124 148 126 158 118 170Z" fill="#ffb056"/></g>
+          <rect x="14" y="176" width="172" height="8" rx="4" fill="#c98a4b"/>
+        </svg>
+      </div>
+    </div>
+  </section>
+
+  <!-- CATEGORY NAV -->
+  <nav class="catnav" aria-label="Menu categories"><div class="catnav-inner" id="catNav"></div></nav>
+
+  <div class="wrap">
+    <!-- DEAL BUILDER (signature) -->
+    <section class="deal" id="deal" aria-labelledby="dealTitle">
+      <div class="deal-head">
+        <span class="badge deal-badge">Popular</span>
+      </div>
+      <div class="deal-head">
+        <h2 class="deal-title" id="dealTitle">Two pizzas + garlic bread</h2>
+        <span class="deal-price">$49</span>
+      </div>
+      <p class="deal-sub">Pick any two pizzas from the menu — garlic bread's on the house price. <span class="deal-savings" id="dealSavings"></span></p>
+      <div class="deal-pick">
+        <div class="deal-slot">
+          <label for="dealPizza1">Pizza one</label>
+          <select id="dealPizza1"></select>
+        </div>
+        <div class="deal-slot">
+          <label for="dealPizza2">Pizza two</label>
+          <select id="dealPizza2"></select>
+        </div>
+      </div>
+      <div class="deal-foot">
+        <span class="deal-note">Deal is priced flat at $49 — extras not available on deal pizzas.</span>
+        <button class="btn btn-primary" id="dealAddBtn">Add deal to cart</button>
+      </div>
+    </section>
+
+    <!-- MENU SECTIONS -->
+    <div id="menuRoot" aria-live="polite"></div>
+  </div>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div>
+      <strong style="color:var(--flour)">Pizza on Wood Oven</strong><br>
+      138 Acland Street, St Kilda VIC 3182<br>
+      Open daily 10:00 am – 9:00 pm
+    </div>
+    <div>
+      Prefer the app? <a href="https://www.ubereats.com/au/store/pizza-on-wood-oven-st-kilda/zA1CTDcYU1-qIvKXjzv2jg">Find us on Uber Eats</a><br>
+      <span style="font-size:.8rem">Demo site — payment is taken in store / on delivery.</span>
+    </div>
+  </div>
+</footer>
+
+<!-- ITEM MODAL -->
+<div class="overlay" id="overlay"></div>
+<div class="modal" id="itemModal" role="dialog" aria-modal="true" aria-labelledby="mTitle">
+  <div class="modal-inner" style="position:relative">
+    <button class="close-x" data-close aria-label="Close">✕</button>
+    <h3 id="mTitle"></h3>
+    <p class="desc" id="mDesc"></p>
+    <fieldset id="mExtrasWrap"><legend>Extras</legend><div id="mExtras"></div></fieldset>
+    <fieldset><legend>Notes for the kitchen</legend><textarea id="mNotes" maxlength="200" placeholder="e.g. well done, no onion…"></textarea></fieldset>
+    <div class="modal-foot">
+      <div class="qty" aria-label="Quantity">
+        <button id="mQtyDown" aria-label="Decrease quantity">−</button>
+        <span id="mQty">1</span>
+        <button id="mQtyUp" aria-label="Increase quantity">+</button>
+      </div>
+      <button class="btn btn-primary" id="mAddBtn">Add · $0.00</button>
+    </div>
+  </div>
+</div>
+
+<!-- CART DRAWER -->
+<aside class="drawer" id="drawer" role="dialog" aria-modal="true" aria-label="Your order">
+  <div class="drawer-head">
+    <h3 id="drawerTitle">Your order</h3>
+    <button class="close-x" style="position:static" data-close aria-label="Close cart">✕</button>
+  </div>
+  <div class="drawer-body" id="drawerBody"></div>
+  <div class="drawer-foot" id="drawerFoot"></div>
+</aside>
+
+<div class="toast" id="toast" role="status"></div>
+
+<script>
+"use strict";
+/* =========================================================
+   Pizza on Wood Oven — ordering frontend
+   Talks to /api/menu and /api/orders when the Node backend
+   is running; falls back to embedded data (demo mode) when
+   opened as a static file.
+   All money is handled in integer cents.
+========================================================= */
+
+const FALLBACK_MENU = {"store":{"name":"Pizza on Wood Oven","suburb":"St Kilda","address":"138 Acland Street, St Kilda VIC 3182","hours":"Open daily 10:00 am – 9:00 pm","rating":3.8,"reviewCount":45,"deliveryFee":5.99,"deliveryMinimum":25},"deal":{"id":"deal-two-pizzas-gb","name":"Special Deal — Two Pizzas + Garlic Bread","description":"Any two pizzas and garlic bread.","price":49,"pizzaCount":2},"categories":[{"id":"gourmet","name":"Gourmet Pizzas","items":[{"id":"super-supreme","name":"Super Supreme Pizza","price":25.5,"discountPct":20,"badge":"No. 1 most liked","description":"Tomato sauce, cheese, ham, salami, mushroom, onion, capsicum, pineapple, olives, anchovies and bacon.","isPizza":true},{"id":"chicken-gourmet","name":"Chicken Gourmet Pizza","price":25.8,"discountPct":20,"badge":"No. 2 most liked","description":"Tomato sauce, cheese, chicken, onion, roasted capsicum, bacon and grated parmesan.","isPizza":true},{"id":"meat-meat","name":"Meat, Meat and Meeeatt Pizza","price":25.5,"badge":"No. 3 most liked","description":"Barbecue sauce, cheese, ham, pepperoni, Italian sausage, chicken breast, beef meatballs and bacon.","isPizza":true},{"id":"spicy-chicken-gourmet","name":"Spicy Chicken Gourmet Pizza","price":25,"description":"Tomato sauce, cheese, spicy chicken, jalapeños, onion and roasted capsicum.","isPizza":true},{"id":"original-gourmet","name":"Original Gourmet Pizza","price":25,"description":"The house gourmet — tomato sauce, cheese and the kitchen's pick of premium toppings.","isPizza":true}]},{"id":"classic","name":"Classic Pizzas","items":[{"id":"margherita","name":"Margherita Pizza","price":23.1,"description":"Tomato sauce, mozzarella and fresh basil, blistered in the wood oven.","isPizza":true},{"id":"hawaiian","name":"Classic Hawaiian Pizza","price":23.9,"description":"Tomato sauce, cheese, ham and pineapple.","isPizza":true},{"id":"loaded-pepperoni","name":"Loaded Pepperoni Pizza","price":23.9,"badge":"93% liked","description":"Tomato sauce, cheese and a double run of pepperoni.","isPizza":true},{"id":"mexican","name":"Mexican Pizza","price":23.9,"description":"Tomato sauce, cheese, salami, onion, capsicum, jalapeños and chilli.","isPizza":true},{"id":"aussie","name":"Aussie Pizza","price":23.9,"description":"Tomato sauce, cheese, ham, bacon and egg.","isPizza":true},{"id":"house-special","name":"House Special Pizza","price":22.9,"description":"Tomato sauce, cheese, ham, mushroom, onion, capsicum and olives.","isPizza":true}]},{"id":"mains","name":"Mains","items":[{"id":"chicken-parmigiana","name":"Chicken Parmigiana","price":34.99,"description":"Chicken breast, mozzarella cheese, Napoli sauce, served with chips."},{"id":"ny-schnitzel","name":"New York Schnitzel","price":34.99,"description":"Chicken, pepperoni, cheese, roasted capsicum and Napoli sauce, served with chips."}]},{"id":"pasta","name":"Pasta","items":[{"id":"carbonara","name":"Carbonara Pasta","price":27,"discountPct":20,"description":"Bacon, cream, egg, cracked pepper and parmesan cheese."}]},{"id":"sides","name":"Sides","placeholder":true,"items":[{"id":"garlic-bread","name":"Garlic Bread","price":8.5,"description":"Wood-oven baked, brushed with garlic butter."},{"id":"chips","name":"Chips","price":7.5,"description":"Golden fries with chicken salt."}]},{"id":"drinks","name":"Drinks","placeholder":true,"items":[{"id":"soft-drink-can","name":"Soft Drink (Can)","price":3.5,"description":"Coke, Coke Zero, Sprite or Fanta."},{"id":"soft-drink-125","name":"Soft Drink (1.25L)","price":6.5,"description":"Coke, Coke Zero, Sprite or Fanta."},{"id":"flat-white","name":"Flat White","price":5,"description":"Double shot, your choice of milk."},{"id":"cappuccino","name":"Cappuccino","price":5,"description":"Double shot, dusted with chocolate."}]}],"extras":[{"id":"x-cheese","name":"Extra cheese","price":2.5},{"id":"x-pepperoni","name":"Extra pepperoni","price":3},{"id":"x-chicken","name":"Extra chicken","price":3.5},{"id":"x-mushroom","name":"Extra mushroom","price":2},{"id":"x-jalapeno","name":"Jalapeños","price":2},{"id":"x-gf-base","name":"Gluten-free base","price":4}]};
+
+const state = {
+  menu:null,
+  itemIndex:new Map(),   // id -> item
+  cart:[],               // {key,type:'item'|'deal', id, name, qtty..., extras[], notes, unitCents}
+  fulfilment:"pickup",
+  demoMode:false,
+  view:"cart"            // cart | checkout | confirm
+};
+
+const $=s=>document.querySelector(s);
+const fmt=c=>"$"+(c/100).toFixed(2);
+const esc=s=>String(s??"").replace(/[&<>"']/g,m=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[m]));
+const unitCents=item=>{
+  const base=Math.round(item.price*100);
+  return item.discountPct?Math.round(base*(100-item.discountPct)/100):base;
+};
+
+/* ---------- boot ---------- */
+async function boot(){
+  try{
+    const r=await fetch("/api/menu",{headers:{Accept:"application/json"}});
+    if(!r.ok) throw new Error("menu "+r.status);
+    state.menu=await r.json();
+  }catch(e){
+    state.menu=FALLBACK_MENU;
+    state.demoMode=true;
+  }
+  if(!state.menu){ $("#menuRoot").innerHTML="<p class='empty'>Menu unavailable right now — please refresh.</p>"; return; }
+  indexMenu(); renderNav(); renderMenu(); renderDeal(); renderCart();
+}
+function indexMenu(){
+  state.itemIndex.clear();
+  for(const cat of state.menu.categories) for(const it of cat.items) state.itemIndex.set(it.id,it);
+  for(const ex of state.menu.extras) state.itemIndex.set(ex.id,ex);
+}
+
+/* ---------- render: nav + menu ---------- */
+function renderNav(){
+  $("#catNav").innerHTML=state.menu.categories.map(c=>
+    `<button class="chip" data-target="menu-${c.id}">${esc(c.name)}</button>`).join("");
+  $("#catNav").addEventListener("click",e=>{
+    const b=e.target.closest(".chip"); if(!b) return;
+    document.getElementById(b.dataset.target)?.scrollIntoView({block:"start"});
+  });
+}
+function renderMenu(){
+  $("#menuRoot").innerHTML=state.menu.categories.map(cat=>`
+    <section class="section" id="menu-${cat.id}" aria-labelledby="h-${cat.id}">
+      <h2 id="h-${cat.id}">${esc(cat.name)}</h2>
+      ${cat.placeholder?`<p class="placeholder-note">Sample items — confirm this section with the kitchen before going live.</p>`:""}
+      <div class="grid">
+        ${cat.items.map(it=>{
+          const u=unitCents(it), full=Math.round(it.price*100);
+          return `<article class="card">
+            <div>
+              ${it.badge?`<span class="badge">${esc(it.badge)}</span>`:""}
+              ${it.discountPct?`<span class="badge" style="background:var(--basil)">${it.discountPct}% off</span>`:""}
+              <div class="card-top"><h3>${esc(it.name)}</h3></div>
+            </div>
+            <p>${esc(it.description||"")}</p>
+            <div class="price-row">
+              <span class="price">${fmt(u)}${it.discountPct?`<span class="was">${fmt(full)}</span>`:""}</span>
+              <button class="add-btn" data-item="${esc(it.id)}">Add</button>
+            </div>
+          </article>`;
+        }).join("")}
+      </div>
+    </section>`).join("");
+  $("#menuRoot").addEventListener("click",e=>{
+    const b=e.target.closest(".add-btn"); if(b) openItemModal(b.dataset.item);
+  });
+  // highlight active chip on scroll
+  const chips=[...document.querySelectorAll(".chip")];
+  const obs=new IntersectionObserver(en=>{
+    en.forEach(x=>{ if(x.isIntersecting){
+      chips.forEach(c=>c.classList.toggle("active",c.dataset.target===x.target.id));
+    }});
+  },{rootMargin:"-30% 0px -60% 0px"});
+  document.querySelectorAll(".section").forEach(s=>obs.observe(s));
+}
+
+/* ---------- deal builder ---------- */
+function allPizzas(){
+  return state.menu.categories.flatMap(c=>c.items).filter(i=>i.isPizza);
+}
+function renderDeal(){
+  const opts=allPizzas().map(p=>`<option value="${esc(p.id)}">${esc(p.name)} (${fmt(Math.round(p.price*100))})</option>`).join("");
+  $("#dealPizza1").innerHTML=opts;
+  $("#dealPizza2").innerHTML=opts;
+  const pz=allPizzas();
+  if(pz[1]) $("#dealPizza2").value=pz[1].id;
+  const upd=()=>{
+    const a=state.itemIndex.get($("#dealPizza1").value), b=state.itemIndex.get($("#dealPizza2").value);
+    const gb=state.itemIndex.get("garlic-bread");
+    const alacarte=Math.round(a.price*100)+Math.round(b.price*100)+(gb?Math.round(gb.price*100):850);
+    const save=alacarte-4900;
+    $("#dealSavings").textContent=save>0?`Save ${fmt(save)} vs à la carte.`:"";
+  };
+  $("#dealPizza1").addEventListener("change",upd);
+  $("#dealPizza2").addEventListener("change",upd);
+  upd();
+  $("#dealAddBtn").addEventListener("click",()=>{
+    const a=state.itemIndex.get($("#dealPizza1").value), b=state.itemIndex.get($("#dealPizza2").value);
+    state.cart.push({
+      key:crypto.randomUUID(), type:"deal", id:state.menu.deal.id,
+      name:state.menu.deal.name, qty:1, unitCents:4900,
+      dealPizzas:[a.id,b.id],
+      detail:`${a.name} + ${b.name} + Garlic Bread`
+    });
+    toast("Deal added to cart"); renderCart(); openDrawer();
+  });
+}
+
+/* ---------- item modal ---------- */
+const modal=$("#itemModal"), overlay=$("#overlay");
+let modalItem=null, modalQty=1;
+function openItemModal(id){
+  const it=state.itemIndex.get(id); if(!it) return;
+  modalItem=it; modalQty=1;
+  $("#mTitle").textContent=it.name;
+  $("#mDesc").textContent=it.description||"";
+  $("#mNotes").value=""; $("#mQty").textContent="1";
+  const showExtras=!!it.isPizza;
+  $("#mExtrasWrap").style.display=showExtras?"block":"none";
+  if(showExtras){
+    $("#mExtras").innerHTML=state.menu.extras.map(ex=>`
+      <div class="opt">
+        <label><input type="checkbox" value="${esc(ex.id)}"> ${esc(ex.name)}</label>
+        <span class="opt-price">+${fmt(Math.round(ex.price*100))}</span>
+      </div>`).join("");
+    $("#mExtras").querySelectorAll("input").forEach(i=>i.addEventListener("change",updModalPrice));
+  }
+  updModalPrice();
+  overlay.classList.add("open"); modal.classList.add("open");
+  modal.querySelector(".close-x").focus();
+}
+function modalExtraIds(){
+  return [...$("#mExtras").querySelectorAll("input:checked")].map(i=>i.value);
+}
+function modalUnit(){
+  let c=unitCents(modalItem);
+  if(modalItem.isPizza) for(const id of modalExtraIds()){
+    const ex=state.itemIndex.get(id); if(ex) c+=Math.round(ex.price*100);
+  }
+  return c;
+}
+function updModalPrice(){ $("#mAddBtn").textContent=`Add · ${fmt(modalUnit()*modalQty)}`; }
+$("#mQtyUp").addEventListener("click",()=>{ modalQty=Math.min(20,modalQty+1); $("#mQty").textContent=modalQty; updModalPrice(); });
+$("#mQtyDown").addEventListener("click",()=>{ modalQty=Math.max(1,modalQty-1); $("#mQty").textContent=modalQty; updModalPrice(); });
+$("#mAddBtn").addEventListener("click",()=>{
+  const extras=modalItem.isPizza?modalExtraIds():[];
+  const extraNames=extras.map(id=>state.itemIndex.get(id)?.name).filter(Boolean);
+  state.cart.push({
+    key:crypto.randomUUID(), type:"item", id:modalItem.id, name:modalItem.name,
+    qty:modalQty, unitCents:modalUnit(), extras,
+    notes:$("#mNotes").value.trim().slice(0,200),
+    detail:extraNames.join(", ")
+  });
+  closeAll(); toast(`${modalItem.name} added`); renderCart(); openDrawer();
+});
+
+/* ---------- cart drawer ---------- */
+const drawer=$("#drawer");
+function openDrawer(){ state.view="cart"; renderCart(); overlay.classList.add("open"); drawer.classList.add("open"); }
+function closeAll(){ overlay.classList.remove("open"); modal.classList.remove("open"); drawer.classList.remove("open"); }
+$("#cartOpenBtn").addEventListener("click",openDrawer);
+overlay.addEventListener("click",closeAll);
+document.addEventListener("click",e=>{ if(e.target.closest("[data-close]")) closeAll(); });
+document.addEventListener("keydown",e=>{ if(e.key==="Escape") closeAll(); });
+
+function totals(){
+  const sub=state.cart.reduce((s,l)=>s+l.unitCents*l.qty,0);
+  const fullSub=state.cart.reduce((s,l)=>{
+    if(l.type==="deal"){
+      const gb=state.itemIndex.get("garlic-bread");
+      const full=l.dealPizzas.reduce((t,id)=>t+Math.round((state.itemIndex.get(id)?.price||0)*100),0)+(gb?Math.round(gb.price*100):850);
+      return s+full*l.qty;
+    }
+    const it=state.itemIndex.get(l.id);
+    let full=it?Math.round(it.price*100):l.unitCents;
+    for(const exId of (l.extras||[])){ const ex=state.itemIndex.get(exId); if(ex) full+=Math.round(ex.price*100); }
+    return s+full*l.qty;
+  },0);
+  const saved=Math.max(0,fullSub-sub);
+  const deliveryFee=state.fulfilment==="delivery"?Math.round(state.menu.store.deliveryFee*100):0;
+  return {sub,saved,deliveryFee,grand:sub+deliveryFee};
+}
+
+function renderCart(){
+  $("#cartCount").textContent=state.cart.reduce((s,l)=>s+l.qty,0);
+  if(state.view==="checkout") return renderCheckout();
+  if(state.view==="confirm") return; // confirmation renders itself
+  $("#drawerTitle").textContent="Your order";
+  const body=$("#drawerBody"), foot=$("#drawerFoot");
+  if(!state.cart.length){
+    body.innerHTML=`<p class="empty">Your cart is empty.<br>The oven's lit — add a pizza to get started.</p>`;
+    foot.innerHTML="";
+    return;
+  }
+  body.innerHTML=state.cart.map(l=>`
+    <div class="line" data-key="${l.key}">
+      <div class="line-main">
+        <strong>${esc(l.name)}</strong>
+        ${l.detail?`<small>${esc(l.detail)}</small>`:""}
+        ${l.notes?`<small>“${esc(l.notes)}”</small>`:""}
+        <div class="line-actions">
+          <div class="qty">
+            <button data-act="down" aria-label="Decrease">−</button><span>${l.qty}</span><button data-act="up" aria-label="Increase">+</button>
+          </div>
+          <button class="remove" data-act="remove">Remove</button>
+        </div>
+      </div>
+      <span class="line-price">${fmt(l.unitCents*l.qty)}</span>
+    </div>`).join("");
+  const t=totals();
+  foot.innerHTML=`
+    ${t.saved?`<div class="totline"><span>You're saving</span><span class="save">−${fmt(t.saved)}</span></div>`:""}
+    <div class="totline"><span>Subtotal</span><span>${fmt(t.sub)}</span></div>
+    <div class="totline grand"><span>Total</span><span id="cartTotal">${fmt(t.grand)}</span></div>
+    <button class="btn btn-primary" id="checkoutBtn">Checkout</button>`;
+  $("#checkoutBtn").addEventListener("click",()=>{ state.view="checkout"; renderCheckout(); });
+}
+$("#drawerBody").addEventListener("click",e=>{
+  const b=e.target.closest("[data-act]"); if(!b) return;
+  const key=e.target.closest(".line")?.dataset.key;
+  const l=state.cart.find(x=>x.key===key); if(!l) return;
+  if(b.dataset.act==="up") l.qty=Math.min(20,l.qty+1);
+  if(b.dataset.act==="down") l.qty=Math.max(1,l.qty-1);
+  if(b.dataset.act==="remove") state.cart=state.cart.filter(x=>x.key!==key);
+  renderCart();
+});
+
+/* ---------- checkout ---------- */
+function renderCheckout(){
+  $("#drawerTitle").textContent="Checkout";
+  const t=totals();
+  const isDel=state.fulfilment==="delivery";
+  const minC=Math.round(state.menu.store.deliveryMinimum*100);
+  const underMin=isDel&&t.sub<minC;
+  $("#drawerBody").innerHTML=`
+    <div class="seg" role="tablist" aria-label="Fulfilment">
+      <button role="tab" aria-selected="${!isDel}" class="${!isDel?"active":""}" data-ful="pickup">Pickup</button>
+      <button role="tab" aria-selected="${isDel}" class="${isDel?"active":""}" data-ful="delivery">Delivery</button>
+    </div>
+    <p style="font-size:.85rem;color:var(--ink-soft)">${isDel?`Delivery fee ${fmt(Math.round(state.menu.store.deliveryFee*100))} · ${fmt(minC)} minimum order`:"Ready in about 20–25 min · 138 Acland St, St Kilda"}</p>
+    <div class="field" id="f-name"><label for="cName">Name</label><input id="cName" autocomplete="name" required><p class="err">Please enter your name.</p></div>
+    <div class="field" id="f-phone"><label for="cPhone">Mobile</label><input id="cPhone" autocomplete="tel" inputmode="tel" placeholder="04xx xxx xxx" required><p class="err">Enter a valid Australian mobile or landline.</p></div>
+    ${isDel?`<div class="field" id="f-addr"><label for="cAddr">Delivery address</label><input id="cAddr" autocomplete="street-address" placeholder="Street address, suburb" required><p class="err">Please enter a delivery address.</p></div>`:""}
+    ${underMin?`<div class="notice warn">Delivery orders need a ${fmt(minC)} subtotal — add ${fmt(minC-t.sub)} more.</div>`:""}
+    <div class="notice">Payment is taken ${isDel?"on delivery":"in store at pickup"} — card or cash. No payment details are collected online.</div>
+    ${state.demoMode?`<div class="notice warn">Demo mode: no backend connected, the order will be simulated locally.</div>`:""}`;
+  $("#drawerBody").querySelectorAll("[data-ful]").forEach(b=>b.addEventListener("click",()=>{
+    state.fulfilment=b.dataset.ful; renderCheckout();
+  }));
+  $("#drawerFoot").innerHTML=`
+    ${state.fulfilment==="delivery"?`<div class="totline"><span>Delivery fee</span><span>${fmt(t.deliveryFee)}</span></div>`:""}
+    <div class="totline grand"><span>Total</span><span>${fmt(t.grand)}</span></div>
+    <button class="btn btn-primary" id="placeBtn" ${underMin?"disabled style='opacity:.5'":""}>Place order · ${fmt(t.grand)}</button>
+    <button class="btn btn-ghost" style="width:100%;justify-content:center;margin-top:8px;color:var(--ink);border-color:rgba(42,26,16,.3)" id="backBtn">Back to cart</button>`;
+  $("#backBtn").addEventListener("click",()=>{ state.view="cart"; renderCart(); });
+  $("#placeBtn")?.addEventListener("click",placeOrder);
+}
+
+function validPhone(p){ return /^(\+?61|0)\d{9}$/.test(String(p).replace(/[\s\-()]/g,"")); }
+
+async function placeOrder(){
+  let ok=true;
+  const name=$("#cName").value.trim(), phone=$("#cPhone").value.trim();
+  const addr=$("#cAddr")?$("#cAddr").value.trim():"";
+  const mark=(id,bad)=>{ const f=$("#"+id); f.classList.toggle("show-err",bad); f.querySelector("input").classList.toggle("invalid",bad); if(bad) ok=false; };
+  mark("f-name",name.length<2);
+  mark("f-phone",!validPhone(phone));
+  if(state.fulfilment==="delivery") mark("f-addr",addr.length<8);
+  if(!ok) return;
+
+  const payload={
+    fulfilment:state.fulfilment,
+    customer:{name,phone,address:addr},
+    lines:state.cart.map(l=>l.type==="deal"
+      ?{type:"deal",dealId:l.id,pizzas:l.dealPizzas,qty:l.qty}
+      :{type:"item",itemId:l.id,extras:l.extras||[],qty:l.qty,notes:l.notes||""})
+  };
+  const btn=$("#placeBtn"); btn.disabled=true; btn.textContent="Placing order…";
+  let result;
+  try{
+    if(state.demoMode) throw new Error("demo");
+    const r=await fetch("/api/orders",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify(payload)});
+    const data=await r.json();
+    if(!r.ok) throw Object.assign(new Error(data.error||"Order failed"),{server:true});
+    result=data;
+  }catch(e){
+    if(e.server){ btn.disabled=false; btn.textContent="Place order"; toast(e.message); return; }
+    // demo fallback
+    result={orderId:"DEMO-"+Math.floor(1000+Math.random()*9000),etaMinutes:state.fulfilment==="delivery"?40:25,totals:totals(),demo:true};
+  }
+  showConfirmation(result);
+}
+
+function showConfirmation(res){
+  state.view="confirm";
+  state.cart=[]; $("#cartCount").textContent="0";
+  $("#drawerTitle").textContent="Order placed";
+  $("#drawerBody").innerHTML=`
+    <div class="confirm">
+      <div class="tick">✓</div>
+      <h3>Thanks — it's in the oven</h3>
+      <div class="order-no">#${esc(res.orderId)}</div>
+      <p>${state.fulfilment==="delivery"?"Estimated delivery":"Ready for pickup"} in about <strong>${esc(String(res.etaMinutes))} minutes</strong>.</p>
+      <p style="margin-top:8px">Total ${fmt(res.totals.grand ?? res.totals.grandCents ?? 0)} · pay ${state.fulfilment==="delivery"?"on delivery":"at the counter"}.</p>
+      ${res.demo?`<p style="margin-top:10px;font-size:.8rem">(Demo mode — this order was simulated in the browser.)</p>`:""}
+    </div>`;
+  $("#drawerFoot").innerHTML=`<button class="btn btn-primary" style="width:100%;justify-content:center" data-close>Done</button>`;
+}
+
+/* ---------- toast ---------- */
+let toastT;
+function toast(msg){
+  const t=$("#toast"); t.textContent=msg; t.classList.add("show");
+  clearTimeout(toastT); toastT=setTimeout(()=>t.classList.remove("show"),2200);
+}
+
+boot();
+</script>
+</body>
+</html>
